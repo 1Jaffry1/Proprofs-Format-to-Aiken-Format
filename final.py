@@ -1,8 +1,8 @@
 import numpy as np
 import pandas as pd
-data = pd.read_excel('target.xlsx',sheet_name = 'EXAM WHOLE BOOK', usecols = 'B:H', header=None, skiprows=6)
+data = pd.read_excel('readFromThis.xlsx',sheet_name = 'FromThisSheet', usecols = 'B:H', header=None, skiprows=6)
 
-f = open('exam whole book.txt', 'w')
+f = open('writeToThis.txt', 'w')
 # for i in range(28):
 i = 0
 while True:
