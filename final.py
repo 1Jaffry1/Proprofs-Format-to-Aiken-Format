@@ -1,11 +1,20 @@
 import numpy as np
 import pandas as pd
-data = pd.read_excel('readFromThis.xlsx',sheet_name = 'FromThisSheet', usecols = 'B:H', header=None, skiprows=6)
+import docx as dox
 
-f = open('writeToThis.txt', 'w')
-# for i in range(28):
+#insert filepath below:
+filepath = "/Users/muhammad/Projects/Mafaheem/Level 2/Exam Level 2, Book 1.xlsx" 
+
+#insert targetpath below:
+targetpath = "/Users/muhammad/Projects/Mafaheem/Level 2/Exam 1-16partial.txt"
+
+
+
+data = pd.read_excel(filepath, sheet_name = f"Exam 1-16", usecols = 'B:H', header=None, skiprows=6)
+f = open(targetpath , 'w')
 i = 0
-while True:
+m=1
+while m<13:
     for j in range(7):
         if j == 0:
             f.write(str(data.iloc[i,j])+'\n')
@@ -20,12 +29,15 @@ while True:
         elif j == 5 and str(data.iloc[i,j]) != 'nan':
             f.write('E. '+str(data.iloc[i,j])+'\n')
         elif j == 6:
-            f.write('Answer: '+str(data.iloc[i,j])+'\n\n')
+            f.write('ANSWER: '+str(data.iloc[i,j])+'\n\n')
     i += 1
+    m+=1
     try:
         if str(data.iloc[i,0]) == 'nan':
             break
     except:
         break
-f.close
-print(data)
+f.close()
+
+
+print(f"PROCESS COMPLETE! FILE CREATED AT {targetpath}")
