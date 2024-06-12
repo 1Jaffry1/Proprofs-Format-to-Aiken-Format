@@ -4,37 +4,37 @@ status = True
 #or edit the code below and run, then enter 1 to run without prompt
 
 #insert filepath below:
-filepath = "BookPathHere, sample: /users/admin/file.xlsx  ,  or , file.xlsx" 
+filepath = "/Users/muhammad/Projects/Mafaheem/Level 2/book 2/Qassas j2 - All Lessons proprofs.xlsx"
 
-sheetName = "SheetNameHere"
+sheetName = "Exam 21-27 (Hazrat Ibrahem a.s)"
 
 #insert targetpath below:
-targetpath = "Path of text file to be created, sample /users/admin/output.txt or output.txt"
+targetpath = "/Users/muhammad/Projects/Mafaheem/Level 2/book 2/out/Exam 21-27 (Hazrat Ibrahem a.s).txt"
 
 if int(input("Enter 1 to run the script without the prompt, if you want the prompt interface, enter 0:\n")) == 0:
     print("----------------------------------\nNOTE: Enter all paths without any preceeding or following \"'\" charachters")
     filepath = input("----------------------------------\nEnter the path of the file you want to Extract data from (format should be xlsx):\n\t")
     sheetName = input("----------------------------------0\nEnter the name of the sheet you want to extract data from:\n\t")
-    while True:
-        try:
-        #You can manipulate the extractor's settings in the line below:
-            data = pd.read_excel(filepath, sheet_name = sheetName, usecols = 'B:H', header=None, skiprows=6)
-            
-        except (FileNotFoundError):
-            print("----------------------------------")
-            print("ERROR: The File Path you provided was not found!")
-            filepath = input("\nEnter the path of the file you want to Extract data from (format should be xlsx):\n\t")
-            continue
-
-        except (ValueError):
-            print("----------------------------------")
-            print("ERROR: The sheet you provided was not found!")
-            sheetName = input("\nEnter the name of the sheet you want to extract data from:\n\t")
-            continue
+    targetpath = input("----------------------------------\nEnter the path and name of the text file you want your data to be written to, \nif such a file does not exist, the script will create it:\nSample: /users/admin/myfile.txt\n\n\t")
+while True:
+    try:
+    #You can manipulate the extractor's settings in the line below:
+        data = pd.read_excel(filepath, sheet_name = sheetName, usecols = 'B:H', header=None, skiprows=6)
         
-        break
+    except (FileNotFoundError):
+        print("----------------------------------")
+        print("ERROR: The File Path you provided was not found!")
+        filepath = input("\nEnter the path of the file you want to Extract data from (format should be xlsx):\n\t")
+        continue
 
-targetpath = input("----------------------------------\nEnter the path and name of the text file you want your data to be written to, \nif such a file does not exist, the script will create it:\nSample: /users/admin/myfile.txt\n\n\t")
+    except (ValueError):
+        print("----------------------------------")
+        print("ERROR: The sheet you provided was not found!")
+        sheetName = input("\nEnter the name of the sheet you want to extract data from:\n\t")
+        continue
+    
+    break
+
 
 f = open(targetpath , 'w')
 i = 0
